@@ -48,3 +48,10 @@ body{
 .article p{
 	color: white;
 }
+
+.centered button{
+	width: auto;
+	position: relative;
+	left: 160px;
+	text-align: center;
+}
