@@ -16,20 +16,29 @@ end
 # Handle POST-request (Receive and save the uploaded file)
 post "/" do 
 	p "*" * 100
-	p APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s
+	p params
 	p "*" * 100
 
-	File.open(APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s, "w") do |f|
+	File.open(File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename], "w") do |f|
 		f.write(File.open(params['myfile'][:tempfile], "r").read)
 	end
 
-	# new_image = Imagefile.create(	filename: params['myfile'][:filename], 
-	# 								url: '/uploads/' + params['myfile'][:filename])
+	new_image = Imagefile.create(	filename: params['myfile'][:filename], 
+									url: '/uploads/' + params['myfile'][:filename])
 
-	# redirect "/review/#{new_image.id}"
+	if request.xhr?
+		return File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename]
+	else
+		redirect "/review/#{new_image.id}"
+	end
 end
 
 get '/review/:id' do
 	@image = Imagefile.find_by(id: params[:id])
-	erb :"/partials/_review"
+	if request.xhr?
+		# haml :"/partials/_review"
+		"HAML"
+	else
+		erb :"/partials/_review"
+	end
 end
