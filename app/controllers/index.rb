@@ -19,7 +19,7 @@ post "/" do
 	p Dir[APP_ROOT.join('public', 'uploads')]
 	p "*" * 100
 
-	File.open(Dir[APP_ROOT.join('public', 'uploads', params['myfile'][:filename]])], "w") do |f|
+	File.open(Dir[APP_ROOT.join('public', 'uploads', params['myfile'][:filename])], "w") do |f|
 		f.write(File.open(params['myfile'][:tempfile], "r").read)
 	end
 
