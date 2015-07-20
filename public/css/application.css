@@ -79,7 +79,6 @@ body{
 #file-upload{
 	position: relative;
 	margin: auto;
-
 }
 
 .review-image{
@@ -88,4 +87,11 @@ body{
 	margin: auto;
 	width: 400px;
 	border: 5px dashed red;
+}
+
+#center{
+	position: relative;
+	text-align: center;
+	margin: auto;
+	width: 450px;
 }
