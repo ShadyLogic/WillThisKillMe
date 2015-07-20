@@ -15,11 +15,7 @@ end
 
 # Handle POST-request (Receive and save the uploaded file)
 post "/" do 
-	p "*" * 100
-	p Dir[APP_ROOT.join('public', 'uploads')][0] + params['myfile'][:filename]
-	p "*" * 100
-
-	File.open(Dir[APP_ROOT.join('public', 'uploads')][0] + "/" + params['myfile'][:filename], "w") do |f|
+	File.open(APP_ROOT.join('public', 'uploads').to_s + "/" + params['myfile'][:filename], "w") do |f|
 		f.write(File.open(params['myfile'][:tempfile], "r").read)
 	end
 
