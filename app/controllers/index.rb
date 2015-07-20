@@ -19,26 +19,17 @@ post "/" do
 	p APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s
 	p "*" * 100
 
-	File.open(APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s, "w") do |f|
-		f.write(File.open(params['myfile'][:tempfile], "r").read)
-	end
+	# File.open(APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s, "w") do |f|
+	# 	f.write(File.open(params['myfile'][:tempfile], "r").read)
+	# end
 
-	new_image = Imagefile.create(	filename: params['myfile'][:filename], 
-									url: '/uploads/' + params['myfile'][:filename])
+	# new_image = Imagefile.create(	filename: params['myfile'][:filename], 
+	# 								url: '/uploads/' + params['myfile'][:filename])
 
-	if request.xhr?
-		return File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename]
-	else
-		redirect "/review/#{new_image.id}"
-	end
+	# redirect "/review/#{new_image.id}"
 end
 
 get '/review/:id' do
 	@image = Imagefile.find_by(id: params[:id])
-	if request.xhr?
-		# haml :"/partials/_review"
-		"HAML"
-	else
-		erb :"/partials/_review"
-	end
+	erb :"/partials/_review"
 end
