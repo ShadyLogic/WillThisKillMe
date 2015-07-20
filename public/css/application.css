@@ -86,5 +86,6 @@ body{
 	position: relative;
 	display: block;
 	margin: auto;
+	width: 400px;
 	border: 5px dashed red;
 }
