@@ -3,9 +3,42 @@ get '/' do
 end
 
 get '/upload' do
+	haml :"/partials/_upload"
+end
+
+post '/images' do
+	p "*" * 100
+	p params
+	p "*" * 100
+	return params[:file]
+end
+
+# Handle POST-request (Receive and save the uploaded file)
+post "/" do 
+	p "*" * 100
+	p params
+	p "*" * 100
+
+	File.open(File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename], "w") do |f|
+		f.write(File.open(params['myfile'][:tempfile], "r").read)
+	end
+
+	new_image = Imagefile.create(	filename: params['myfile'][:filename], 
+									url: '/uploads/' + params['myfile'][:filename])
+
 	if request.xhr?
-		erb :"/partials/_upload", layout: false
+		return File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename]
 	else
-		erb :"/partials/_upload"
+		redirect "/review/#{new_image.id}"
+	end
+end
+
+get '/review/:id' do
+	@image = Imagefile.find_by(id: params[:id])
+	if request.xhr?
+		# haml :"/partials/_review"
+		"HAML"
+	else
+		erb :"/partials/_review"
 	end
 end

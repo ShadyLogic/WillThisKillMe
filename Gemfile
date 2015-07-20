@@ -11,6 +11,8 @@ gem 'sinatra-contrib'
 gem 'activesupport', '~>4.2.0'
 gem 'activerecord', '~>4.2.0'
 
+gem 'haml'
+
 gem 'rake'
 
 gem 'shotgun'

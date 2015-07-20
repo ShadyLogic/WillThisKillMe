@@ -1,3 +1,10 @@
-	<button id="upload-button" class="btn btn-success fileinput-button">
-	    <input id="fileupload" type="file" accept="image/*" capture="camera" name="files[]">
-	</button>
+<div class="panel panel-danger">
+<div class="panel-heading"><h3>What scares you?</h3></div>
+  <div class="panel-body">
+	<form id="upload-form" action="/upload" method="POST" enctype='multipart/form-data'>
+		<input id="file-upload" type="file" accept="image/*" capture="camera" name="file">
+		<input id="file-upload-button" type="submit" value="Upload">
+	</form>
+  </div>
+</div>
+

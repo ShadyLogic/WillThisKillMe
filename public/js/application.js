@@ -19,12 +19,12 @@ $(document).ready(function() {
 				new_post.hide();
 				new_post.fadeIn();
 			});
-			request.done(function(serverData){
+			request.fail(function(serverData){
 				console.log("FAIL! " + serverData)
 			});
 
 		});
 
 	});
-
+	
 });

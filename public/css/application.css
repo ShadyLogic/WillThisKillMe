@@ -6,6 +6,7 @@ body{
 	background-color: black;
 }
 
+/*Scrolling Background CSS**************************/
 #background{
 	background-image: url("/images/danger-big.png");
 	background-size: 333px;
@@ -13,6 +14,8 @@ body{
 	height: 333px;
 	width: 100%;
 }
+/***************************************************/
+
 
 #header-title{
 	position: absolute;
@@ -67,4 +70,21 @@ body{
 
 #upload-button{
 	margin: auto;
+}
+
+.panel-heading{
+	text-align: center;
+}
+
+#file-upload{
+	position: relative;
+	margin: auto;
+
+}
+
+.review-image{
+	position: relative;
+	display: block;
+	margin: auto;
+	border: 5px dashed red;
 }
