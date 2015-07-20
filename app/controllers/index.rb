@@ -19,9 +19,9 @@ post "/" do
 	p APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s
 	p "*" * 100
 
-	# File.open(APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s, "w") do |f|
-	# 	f.write(File.open(params['myfile'][:tempfile], "r").read)
-	# end
+	File.open(APP_ROOT.join('public', 'uploads', params['myfile'][:filename]).to_s, "w") do |f|
+		f.write(File.open(params['myfile'][:tempfile], "r").read)
+	end
 
 	# new_image = Imagefile.create(	filename: params['myfile'][:filename], 
 	# 								url: '/uploads/' + params['myfile'][:filename])
