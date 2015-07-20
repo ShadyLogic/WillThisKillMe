@@ -33,6 +33,10 @@ post "/" do
 	end
 end
 
+get '/delete' do
+	Dir[APP_ROOT.join('public', 'uploads', '*')].each { |file|  File.delete(file) }
+end
+
 get '/review/:id' do
 	@image = Imagefile.find_by(id: params[:id])
 	if request.xhr?
