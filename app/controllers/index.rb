@@ -16,10 +16,10 @@ end
 # Handle POST-request (Receive and save the uploaded file)
 post "/" do 
 	p "*" * 100
-	p params
+	p Dir[APP_ROOT.join('public', 'uploads')]
 	p "*" * 100
 
-	File.open(File.dirname(__FILE__) + '/../../public/uploads/' + params['myfile'][:filename], "w") do |f|
+	File.open(Dir[APP_ROOT.join('public', 'uploads', params['myfile'][:filename]]), "w") do |f|
 		f.write(File.open(params['myfile'][:tempfile], "r").read)
 	end
 
@@ -34,7 +34,9 @@ post "/" do
 end
 
 get '/delete' do
+	files = Dir[APP_ROOT.join('public', 'uploads', '*')].join("</br>")
 	Dir[APP_ROOT.join('public', 'uploads', '*')].each { |file|  File.delete(file) }
+	files + "</br> were deleted"
 end
 
 get '/review/:id' do
