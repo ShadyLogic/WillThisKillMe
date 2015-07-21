@@ -22,9 +22,15 @@ $(document).ready(function() {
 			request.fail(function(serverData){
 				console.log("FAIL! " + serverData)
 			});
-
 		});
-
 	});
-	
+
+
+
 });
+
+$(window).ready(function(){
+	$('#review-panel').hide().fadeIn(1000, function(){
+		$('#metal-door').delay(500).slideUp(5000);
+	});
+})

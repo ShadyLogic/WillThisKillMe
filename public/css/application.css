@@ -81,6 +81,13 @@ body{
 	margin: auto;
 }
 
+#metal-door{
+	position: absolute;
+	display: block;
+	top: 0px;
+	height: 100%;
+}
+
 .review-image{
 	position: relative;
 	display: block;
@@ -89,7 +96,7 @@ body{
 	border: 5px dashed red;
 }
 
-#center{
+.center{
 	position: relative;
 	text-align: center;
 	margin: auto;
