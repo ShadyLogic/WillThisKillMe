@@ -88,6 +88,22 @@ body{
 	height: 100%;
 }
 
+.bars{
+	position: absolute;
+	display: block;
+	top: 0px;
+	height: 100%;
+	width: 50%;
+}
+
+#bars-left{
+	left: 0px;
+}
+
+#bars-right{
+	right: 0px;
+}
+
 .review-image{
 	position: relative;
 	display: block;
@@ -101,4 +117,18 @@ body{
 	text-align: center;
 	margin: auto;
 	width: 450px;
+}
+
+.backgroundRed{
+	background-color: red;
+}
+
+.busey{
+	background-image: url("/images/busey.jpg");
+	background-size: 100%;
+}
+
+#busey{
+	width: 1000%;
+	height: 100%;
 }

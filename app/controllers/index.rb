@@ -14,12 +14,16 @@ post '/images' do
 end
 
 # Handle POST-request (Receive and save the uploaded file)
-post "/" do 
-	File.open(APP_ROOT.join('public', 'uploads').to_s + "/" + params['myfile'][:filename], "w") do |f|
-		f.write(File.open(params['myfile'][:tempfile], "r").read)
+post "/" do
+	begin
+		File.open(APP_ROOT.join('public', 'uploads').to_s + "/" + params['myfile'][:filename], "w") do |f|
+			f.write(File.open(params['myfile'][:tempfile], "r").read)
+		end
+	rescue
+		return erb :"/status/400", layout: false
 	end
 
-	new_image = Imagefile.create(	filename: params['myfile'][:filename], 
+	new_image = Imagefile.create(	filename: params['myfile'][:filename],
 									url: '/uploads/' + params['myfile'][:filename])
 
 	if request.xhr?

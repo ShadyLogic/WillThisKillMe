@@ -29,8 +29,23 @@ $(document).ready(function() {
 
 });
 
-$(window).ready(function(){
+$(document).ready(function(){
 	$('#review-panel').hide().fadeIn(1000, function(){
-		$('#metal-door').delay(500).slideUp(5000);
+		$('#metal-door').delay(500).slideUp(3000, function(){
+			$('#bars-left').animate({ width: '0px'}, 2000);
+			$('#bars-right').animate({ width: '0px'}, 2000, function(){
+				LoadSoundAndPlay()
+				setInterval(function(){
+				    $("body").toggleClass("backgroundRed");
+				 },100)
+			});
+    });
 	});
 })
+
+var LoadSoundAndPlay = function(){
+	var audioElement = document.createElement('audio');
+  audioElement.setAttribute('src', '/sounds/siren.mp3');
+  audioElement.setAttribute('autoplay', 'autoplay');
+  audioElement.play();
+}
